@@ -1,38 +1,117 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import Speech from 'react-native-speech';
-//var Speech = require('react-native-speech');
+import ToggleSwitch from 'toggle-switch-react-native';
 
 export default class Setup extends Component {
     constructor(props){
         super(props)
-        this.state = {}
+        this.state = {
+            Merlin: true,
+            Assassin: true,
+            Percival: true,
+            Morgana: true,
+            Mordred: true,
+            Oberon: true
+        }
+        this.handleMerlin = this.handleMerlin.bind(this)
+        this.handleAssassin = this.handleAssassin.bind(this)
+        this.handlePercival = this.handlePercival.bind(this)
+        this.handleMorgana = this.handleMorgana.bind(this)
+        this.handleMordred = this.handleMordred.bind(this)
+        this.handleOberon = this.handleOberon.bind(this)
+
     }
+
+    handleMerlin(event){
+        this.setState({Merlin: event})
+    }
+    handleAssassin(event){
+        this.setState({Assassin: event})
+    }
+    handlePercival(event){
+        this.setState({Percival: event})
+    }
+    handleMorgana(event){
+        this.setState({Morgana: event})
+    }
+    handleMordred(event){
+        this.setState({Mordred: event})
+    }
+    handleOberon(event){
+        this.setState({Oberon: event})
+    }
+
+
+
     
     render(){
         return (
             <View>
-                <Text>Click this button below to speak</Text>
+                <Text>SETUP</Text>
+                <ToggleSwitch
+                    isOn={true}
+                    onColor='green'
+                    offColor='red'
+                    label='Merlin'
+                    labelStyle={{color: 'black', fontWeight: '900'}}
+                    size='default'
+                    onToggle={ (isOn) => {
+                        this.handleMerlin(isOn)
+                        console.log('current state : ', this.state.Merlin) }}
+                />
+                <ToggleSwitch
+                    isOn={true}
+                    onColor='green'
+                    offColor='red'
+                    label='Oberon'
+                    labelStyle={{color: 'black', fontWeight: '900'}}
+                    size='default'
+                    onToggle={ (isOn) => {
+                        this.handleOberon(isOn)
+                        console.log('current state : ', this.state.Oberon) }}
+                />
+                <ToggleSwitch
+                    isOn={true}
+                    onColor='green'
+                    offColor='red'
+                    label='Mordred'
+                    labelStyle={{color: 'black', fontWeight: '900'}}
+                    size='default'
+                    onToggle={ (isOn) => {
+                        this.handleMordred(isOn)
+                        console.log('current state : ', this.state.Mordred) }}
+                />
+                <ToggleSwitch
+                    isOn={true}
+                    onColor='green'
+                    offColor='red'
+                    label='Morgana'
+                    labelStyle={{color: 'black', fontWeight: '900'}}
+                    size='default'
+                    onToggle={ (isOn) => {
+                        this.handleMorgana(isOn)
+                        console.log('current state : ', this.state.Morgana) }}
+                />
+                <ToggleSwitch
+                    isOn={true}
+                    onColor='green'
+                    offColor='red'
+                    label='Percival'
+                    labelStyle={{color: 'black', fontWeight: '900'}}
+                    size='default'
+                    onToggle={ (isOn) => {
+                        this.handlePercival(isOn)
+                        console.log('current state : ', this.state.Percival) }}
+                />
+               
+
+                <Button
+                    onPress={() => this.props.navigation.navigate('Narration', {setup: this.state})}
+                    title="READY"
+                />
+
             </View>
         )
     }
 }
-
-
-// = () => (
-//   <View style={styles.container}>
-//     <Text>This is my Setup Component!</Text>
-//   </View>
-// );
-
-// const styles = StyleSheet.create({
-//     container: { 
-//         flex: 1, 
-//         alignItems: 'center', 
-//         backgroundColor: '#AAA',
-//         justifyContent: 'center' 
-//     }
-// })
-
-// export default Setup;

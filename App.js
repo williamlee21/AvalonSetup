@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Home from './Components/Home';
 import Setup from './Components/Setup';
+import Narration from './Components/Narration';
 
 const RootNavigator = StackNavigator({
   Main: {
@@ -15,6 +16,12 @@ const RootNavigator = StackNavigator({
     screen: Setup,
     navigationOptions: {
       headerTitle: 'Setup'
+    }
+  },
+  Narration: {
+    screen: Narration,
+    navigationOptions: {
+      HeaderTitle: 'Story time!!'
     }
   }
 });
