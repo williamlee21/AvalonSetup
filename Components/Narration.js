@@ -3,12 +3,12 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 export default class Narration extends Component {
-    
+
     render(){
         const character = this.props.navigation.state.params.setup
         return (
             <View>
-                <Text>Story beginning</Text>
+                <Text>Reading Script</Text>
                 {Expo.Speech.speak('Everyone close your eyes and extend your hand into a fist in front of you', {rate:.9})}
                 {/* Oberon */}
                 {!character.Oberon && Expo.Speech.speak('Minions of Mordred, open your eyes and look around so you know the agents of evil.', {rate:.9})}
@@ -25,6 +25,8 @@ export default class Narration extends Component {
                 {character.Percival && Expo.Speech.speak('5, 4, 3, 2, 1', {rate:0.2})}
                 {character.Percival && Expo.Speech.speak('Merlin and Morgana, put your thumbs down. Percival, close your eyes.', {rate:.9})}
                 {Expo.Speech.speak('All players should have their eyes closed and hands in a fist in front of them. Everyone, open your eyes', {rate:.9})}
+
+                <Button onPress={() => Expo.Speech.stop()} title='Stop reading' /> 
             </View>
         )
     }
