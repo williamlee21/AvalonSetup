@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import Home from './Components/Home';
 import Setup from './Components/Setup';
 import Narration from './Components/Narration';
+import background from './Assets/background.jpg'
 
 const RootNavigator = StackNavigator({
   Main: {

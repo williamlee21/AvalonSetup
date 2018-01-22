@@ -56,10 +56,9 @@ export default class Setup extends Component {
                     label='Merlin'
                     labelStyle={{color: 'black', fontWeight: '900'}}
                     size='default'
-                    onToggle={ (isOn) => {
-                        this.handleMerlin(isOn)
-                        console.log('current state : ', this.state.Merlin) }}
+                    onToggle={ (isOn) => {this.handleMerlin(isOn)}}
                 />
+                
                 <ToggleSwitch
                     isOn={true}
                     onColor='green'
@@ -67,9 +66,7 @@ export default class Setup extends Component {
                     label='Oberon'
                     labelStyle={{color: 'black', fontWeight: '900'}}
                     size='default'
-                    onToggle={ (isOn) => {
-                        this.handleOberon(isOn)
-                        console.log('current state : ', this.state.Oberon) }}
+                    onToggle={ (isOn) => {this.handleOberon(isOn)}}
                 />
                 <ToggleSwitch
                     isOn={true}
@@ -78,9 +75,7 @@ export default class Setup extends Component {
                     label='Mordred'
                     labelStyle={{color: 'black', fontWeight: '900'}}
                     size='default'
-                    onToggle={ (isOn) => {
-                        this.handleMordred(isOn)
-                        console.log('current state : ', this.state.Mordred) }}
+                    onToggle={ (isOn) => {this.handleMordred(isOn)}}
                 />
                 <ToggleSwitch
                     isOn={true}
@@ -89,9 +84,7 @@ export default class Setup extends Component {
                     label='Morgana'
                     labelStyle={{color: 'black', fontWeight: '900'}}
                     size='default'
-                    onToggle={ (isOn) => {
-                        this.handleMorgana(isOn)
-                        console.log('current state : ', this.state.Morgana) }}
+                    onToggle={ (isOn) => {this.handleMorgana(isOn)}}
                 />
                 <ToggleSwitch
                     isOn={true}
@@ -100,9 +93,7 @@ export default class Setup extends Component {
                     label='Percival'
                     labelStyle={{color: 'black', fontWeight: '900'}}
                     size='default'
-                    onToggle={ (isOn) => {
-                        this.handlePercival(isOn)
-                        console.log('current state : ', this.state.Percival) }}
+                    onToggle={ (isOn) => {this.handlePercival(isOn)}}
                 />
                
 
