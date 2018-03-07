@@ -44,65 +44,117 @@ export default class Setup extends Component {
 
 
 
-    
     render(){
-        return (
-            <View>
-                <Text>SETUP</Text>
-                <ToggleSwitch
-                    isOn={true}
-                    onColor='green'
-                    offColor='red'
-                    label='Merlin'
-                    labelStyle={{color: 'black', fontWeight: '900'}}
-                    size='default'
-                    onToggle={ (isOn) => {this.handleMerlin(isOn)}}
-                />
-                
-                <ToggleSwitch
-                    isOn={true}
-                    onColor='green'
-                    offColor='red'
-                    label='Oberon'
-                    labelStyle={{color: 'black', fontWeight: '900'}}
-                    size='default'
-                    onToggle={ (isOn) => {this.handleOberon(isOn)}}
-                />
-                <ToggleSwitch
-                    isOn={true}
-                    onColor='green'
-                    offColor='red'
-                    label='Mordred'
-                    labelStyle={{color: 'black', fontWeight: '900'}}
-                    size='default'
-                    onToggle={ (isOn) => {this.handleMordred(isOn)}}
-                />
-                <ToggleSwitch
-                    isOn={true}
-                    onColor='green'
-                    offColor='red'
-                    label='Morgana'
-                    labelStyle={{color: 'black', fontWeight: '900'}}
-                    size='default'
-                    onToggle={ (isOn) => {this.handleMorgana(isOn)}}
-                />
-                <ToggleSwitch
-                    isOn={true}
-                    onColor='green'
-                    offColor='red'
-                    label='Percival'
-                    labelStyle={{color: 'black', fontWeight: '900'}}
-                    size='default'
-                    onToggle={ (isOn) => {this.handlePercival(isOn)}}
-                />
-               
-
-                <Button
-                    onPress={() => this.props.navigation.navigate('Narration', {setup: this.state})}
-                    title="READY"
-                />
-
+        return(
+            <View style={styles.container}>
+                <View style={styles.row}>
+                    <View style={styles.blue}>
+                        <Text>Merlin</Text>
+                    </View>
+                    <View style={styles.red}>
+                        <Text>Mordred</Text>
+                    </View>
+                </View>
+                <View style={styles.row}>
+                    <View style={style=styles.blue}>
+                        <Text>Percival</Text>
+                    </View>
+                    <View style={styles.red}>
+                        <Text>Morgana</Text>
+                    </View>
+                </View>
+                <View style={styles.row}>
+                    <View style={style=styles.red}>
+                        <Text>Assassin</Text>
+                    </View>
+                    <View style={styles.red}>
+                        <Text>Oberon</Text>
+                    </View>
+                </View>
+                <View style={{flex:.3, backgroundColor: 'red'}}>
+                    <Text>Ready</Text>
+                </View>
             </View>
         )
     }
+
+    
+    // render(){
+    //     return (
+    //         <View>
+    //             <Text>SETUP</Text>
+    //             <ToggleSwitch
+    //                 isOn={true}
+    //                 onColor='green'
+    //                 offColor='red'
+    //                 label='Merlin'
+    //                 labelStyle={{color: 'black', fontWeight: '900'}}
+    //                 size='default'
+    //                 onToggle={ (isOn) => {this.handleMerlin(isOn)}}
+    //             />
+                
+    //             <ToggleSwitch
+    //                 isOn={true}
+    //                 onColor='green'
+    //                 offColor='red'
+    //                 label='Oberon'
+    //                 labelStyle={{color: 'black', fontWeight: '900'}}
+    //                 size='default'
+    //                 onToggle={ (isOn) => {this.handleOberon(isOn)}}
+    //             />
+    //             <ToggleSwitch
+    //                 isOn={true}
+    //                 onColor='green'
+    //                 offColor='red'
+    //                 label='Mordred'
+    //                 labelStyle={{color: 'black', fontWeight: '900'}}
+    //                 size='default'
+    //                 onToggle={ (isOn) => {this.handleMordred(isOn)}}
+    //             />
+    //             <ToggleSwitch
+    //                 isOn={true}
+    //                 onColor='green'
+    //                 offColor='red'
+    //                 label='Morgana'
+    //                 labelStyle={{color: 'black', fontWeight: '900'}}
+    //                 size='default'
+    //                 onToggle={ (isOn) => {this.handleMorgana(isOn)}}
+    //             />
+    //             <ToggleSwitch
+    //                 isOn={true}
+    //                 onColor='green'
+    //                 offColor='red'
+    //                 label='Percival'
+    //                 labelStyle={{color: 'black', fontWeight: '900'}}
+    //                 size='default'
+    //                 onToggle={ (isOn) => {this.handlePercival(isOn)}}
+    //             />
+               
+
+    //             <Button
+    //                 onPress={() => this.props.navigation.navigate('Narration', {setup: this.state})}
+    //                 title="READY"
+    //             />
+
+    //         </View>
+    //     )
+    // }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
+    row: {
+        flex: 1,
+        flexDirection: 'row'
+    },
+    red: {
+        flex: 1,
+        backgroundColor: 'saddlebrown'
+    },
+    blue: {
+        flex: 1,
+        backgroundColor: 'skyblue'
+    }
+  });
