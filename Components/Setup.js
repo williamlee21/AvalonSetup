@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import ToggleSwitch from 'toggle-switch-react-native';
 
@@ -8,11 +8,17 @@ export default class Setup extends Component {
         super(props)
         this.state = {
             Merlin: true,
-            Assassin: true,
-            Percival: true,
-            Morgana: true,
+            MerlinOpacity: 1,
             Mordred: true,
-            Oberon: true
+            MordredOpacity: .5, 
+            Percival: true,
+            PercivalOpacity: .5,
+            Morgana: true,
+            MorganaOpacity: .5,
+            Assassin: true,
+            AssassinOpacity: .5,
+            Oberon: true,
+            OberonOpacity: .5,
         }
         this.handleMerlin = this.handleMerlin.bind(this)
         this.handleAssassin = this.handleAssassin.bind(this)
@@ -24,22 +30,31 @@ export default class Setup extends Component {
     }
 
     handleMerlin(event){
-        this.setState({Merlin: event})
-    }
-    handleAssassin(event){
-        this.setState({Assassin: event})
-    }
-    handlePercival(event){
-        this.setState({Percival: event})
-    }
-    handleMorgana(event){
-        this.setState({Morgana: event})
+        if (this.state.MerlinOpacity === .1) {
+            this.setState({MerlinOpacity: 1})
+            this.setState({Merlin: !this.state.Merlin})
+        }
+        else {
+            this.setState({MerlinOpacity: .1})
+            this.setState({Merlin: !this.state.Merlin})
+        }
+        
     }
     handleMordred(event){
-        this.setState({Mordred: event})
+        this.setState({Mordred: !this.state.Mordred})
+        console.log(this.state.Merlin, this.state.MerlinOpacity)
+    }
+    handlePercival(event){
+        this.setState({Percival: !this.state.Percival})
+    }
+    handleMorgana(event){
+        this.setState({Morgana: !this.state.Percival})
+    }
+     handleAssassin(event){
+        this.setState({Assassin: !this.state.Assassin})
     }
     handleOberon(event){
-        this.setState({Oberon: event})
+        this.setState({Oberon: !this.state.Oberon})
     }
 
 
@@ -48,32 +63,38 @@ export default class Setup extends Component {
         return(
             <View style={styles.container}>
                 <View style={styles.row}>
-                    <View style={styles.blue}>
+                    <TouchableOpacity onPress={this.handleMerlin} style={[styles.blue, {opacity:this.state.MerlinOpacity}]} >
                         <Text>Merlin</Text>
-                    </View>
-                    <View style={styles.red}>
+                        <Text>Knows all evil EXPECT Mordred</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.red} onPress={this.handleMordred}>
                         <Text>Mordred</Text>
-                    </View>
+                        <Text>Hides from Merlin</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.row}>
-                    <View style={style=styles.blue}>
+                    <TouchableOpacity style={style=styles.blue}>
                         <Text>Percival</Text>
-                    </View>
-                    <View style={styles.red}>
+                        <Text>Knows Merlin AND Morgana</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.red}>
                         <Text>Morgana</Text>
-                    </View>
+                        <Text>Appears as Merlin to Percival</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.row}>
-                    <View style={style=styles.red}>
+                    <TouchableOpacity style={style=styles.red}>
                         <Text>Assassin</Text>
-                    </View>
-                    <View style={styles.red}>
+                        <Text>Find Merlin to win</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.red}>
                         <Text>Oberon</Text>
-                    </View>
+                        <Text>Does not know who is evil</Text>
+                    </TouchableOpacity>
                 </View>
-                <View style={{flex:.3, backgroundColor: 'red'}}>
+                <TouchableOpacity style={styles.readyButton} onPress={() => this.props.navigation.navigate('Narration', {setup: this.state})}>
                     <Text>Ready</Text>
-                </View>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -151,10 +172,20 @@ const styles = StyleSheet.create({
     },
     red: {
         flex: 1,
-        backgroundColor: 'saddlebrown'
+        backgroundColor: 'saddlebrown',
+        alignItems: 'center',
+        margin: .5
     },
     blue: {
         flex: 1,
-        backgroundColor: 'skyblue'
+        backgroundColor: 'skyblue',
+        alignItems: 'center',
+        margin: .5
+    },
+    readyButton: {
+        flex:.3, 
+        backgroundColor: '#ff6666', 
+        alignItems: 'center',
+        justifyContent: 'center'
     }
   });
