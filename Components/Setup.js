@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, TouchableWithoutFeedback, TouchableOpacity, Image } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import ToggleSwitch from 'toggle-switch-react-native';
 
@@ -8,7 +8,7 @@ export default class Setup extends Component {
         super(props)
         this.state = {
             Merlin: true,
-            MerlinOpacity: 1,
+            MerlinOpacity: 'blue',
             Mordred: true,
             MordredOpacity: .5, 
             Percival: true,
@@ -30,12 +30,12 @@ export default class Setup extends Component {
     }
 
     handleMerlin(event){
-        if (this.state.MerlinOpacity === .1) {
-            this.setState({MerlinOpacity: 1})
+        if (this.state.MerlinOpacity === 'gray') {
+            this.setState({MerlinOpacity: 'blue'})
             this.setState({Merlin: !this.state.Merlin})
         }
-        else {
-            this.setState({MerlinOpacity: .1})
+        else if (this.state.MerlinOpacity === 'blue'){
+            this.setState({MerlinOpacity: 'gray'})
             this.setState({Merlin: !this.state.Merlin})
         }
         
@@ -63,32 +63,38 @@ export default class Setup extends Component {
         return(
             <View style={styles.container}>
                 <View style={styles.row}>
-                    <TouchableOpacity onPress={this.handleMerlin} style={[styles.blue, {opacity:this.state.MerlinOpacity}]} >
-                        <Text>Merlin</Text>
+                    <TouchableOpacity onPress={this.handleMerlin} style={[styles.blue, {backgroundColor:this.state.MerlinOpacity}]} >
+                        <Text style={[styles.characterName, {color: '#FDB768'}]}>Merlin</Text>
+                        <Image source={require('../Assets/Merlin.png')}/>
                         <Text>Knows all evil EXPECT Mordred</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.red} onPress={this.handleMordred}>
-                        <Text>Mordred</Text>
+                        <Text style={styles.characterName}>Mordred</Text>
+                        <Image source={require('../Assets/Mordred.png')}/>
                         <Text>Hides from Merlin</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.row}>
                     <TouchableOpacity style={style=styles.blue}>
-                        <Text>Percival</Text>
+                        <Text style={[styles.characterName,{color: '#FDB768'}]}>Percival</Text>
+                        <Image source={require('../Assets/Percival.png')}/>
                         <Text>Knows Merlin AND Morgana</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.red}>
-                        <Text>Morgana</Text>
+                        <Text style={styles.characterName}>Morgana</Text>
+                        <Image source={require('../Assets/Morgana.png')}/>
                         <Text>Appears as Merlin to Percival</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.row}>
                     <TouchableOpacity style={style=styles.red}>
-                        <Text>Assassin</Text>
+                        <Text style={styles.characterName}>Assassin</Text>
+                        <Image source={require('../Assets/Assassin.png')}/>
                         <Text>Find Merlin to win</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.red}>
-                        <Text>Oberon</Text>
+                        <Text style={styles.characterName}>Oberon</Text>
+                        <Image source={require('../Assets/Oberon.png')}/>
                         <Text>Does not know who is evil</Text>
                     </TouchableOpacity>
                 </View>
@@ -172,15 +178,23 @@ const styles = StyleSheet.create({
     },
     red: {
         flex: 1,
-        backgroundColor: 'saddlebrown',
+        backgroundColor: '#944743',
         alignItems: 'center',
         margin: .5
     },
     blue: {
         flex: 1,
-        backgroundColor: 'skyblue',
+        backgroundColor: '#5E92F2',
         alignItems: 'center',
         margin: .5
+    },
+    characterName: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'silver'
+    },
+    characterText: {
+        fontSize: 12
     },
     readyButton: {
         flex:.3, 

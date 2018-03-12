@@ -10,8 +10,8 @@ export default class Narration extends Component {
             <View>
                 <Text>Reading Script</Text>
                 {Expo.Speech.speak('Everyone close your eyes and extend your hand into a fist in front of you', {rate:1.02})}
-                {/* Oberon */}
                 {!character.Oberon && Expo.Speech.speak('Minions of Mordred, open your eyes and look around so you know the agents of evil.', {rate:1.02})}
+                {/* Oberon */}
                 {character.Oberon && Expo.Speech.speak('Minions of Mordred, except Oberon, open your eyes and look around so you know the agents of evil.', {rate:1.02})}
                 {Expo.Speech.speak('5, 4, 3, 2, 1', {rate:0.5})}
                 {Expo.Speech.speak('Minions of Mordred, close your eyes.', {rate:1.02})}
