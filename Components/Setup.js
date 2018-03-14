@@ -8,17 +8,17 @@ export default class Setup extends Component {
         super(props)
         this.state = {
             Merlin: true,
-            MerlinOpacity: 'blue',
+            MerlinOpacity: 1,
             Mordred: true,
-            MordredOpacity: .5, 
+            MordredOpacity: 1, 
             Percival: true,
-            PercivalOpacity: .5,
+            PercivalOpacity: 1,
             Morgana: true,
-            MorganaOpacity: .5,
+            MorganaOpacity: 1,
             Assassin: true,
-            AssassinOpacity: .5,
+            AssassinOpacity: 1,
             Oberon: true,
-            OberonOpacity: .5,
+            OberonOpacity: 1,
         }
         this.handleMerlin = this.handleMerlin.bind(this)
         this.handleAssassin = this.handleAssassin.bind(this)
@@ -30,25 +30,16 @@ export default class Setup extends Component {
     }
 
     handleMerlin(event){
-        if (this.state.MerlinOpacity === 'gray') {
-            this.setState({MerlinOpacity: 'blue'})
-            this.setState({Merlin: !this.state.Merlin})
-        }
-        else if (this.state.MerlinOpacity === 'blue'){
-            this.setState({MerlinOpacity: 'gray'})
-            this.setState({Merlin: !this.state.Merlin})
-        }
-        
+        this.setState({Merlin: !this.state.Merlin})  
     }
     handleMordred(event){
         this.setState({Mordred: !this.state.Mordred})
-        console.log(this.state.Merlin, this.state.MerlinOpacity)
     }
     handlePercival(event){
         this.setState({Percival: !this.state.Percival})
     }
     handleMorgana(event){
-        this.setState({Morgana: !this.state.Percival})
+        this.setState({Morgana: !this.state.Morgana})
     }
      handleAssassin(event){
         this.setState({Assassin: !this.state.Assassin})
@@ -63,39 +54,51 @@ export default class Setup extends Component {
         return(
             <View style={styles.container}>
                 <View style={styles.row}>
-                    <TouchableOpacity onPress={this.handleMerlin} style={[styles.blue, {backgroundColor:this.state.MerlinOpacity}]} >
-                        <Text style={[styles.characterName, {color: '#FDB768'}]}>Merlin</Text>
-                        <Image source={require('../Assets/Merlin.png')}/>
-                        <Text>Knows all evil EXPECT Mordred</Text>
+                    <TouchableOpacity style={{flex:1}} onPress={this.handleMerlin}  >
+                        <View style={[styles.blue, this.state.Merlin ? styles.on : styles.off]}>
+                            <Text style={[styles.characterName, {color: '#FDB768'}]}>Merlin</Text>
+                            <Image source={require('../Assets/Merlin.png')}/>
+                            <Text>Knows all evil EXPECT Mordred</Text>
+                        </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.red} onPress={this.handleMordred}>
-                        <Text style={styles.characterName}>Mordred</Text>
-                        <Image source={require('../Assets/Mordred.png')}/>
-                        <Text>Hides from Merlin</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.row}>
-                    <TouchableOpacity style={style=styles.blue}>
-                        <Text style={[styles.characterName,{color: '#FDB768'}]}>Percival</Text>
-                        <Image source={require('../Assets/Percival.png')}/>
-                        <Text>Knows Merlin AND Morgana</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.red}>
-                        <Text style={styles.characterName}>Morgana</Text>
-                        <Image source={require('../Assets/Morgana.png')}/>
-                        <Text>Appears as Merlin to Percival</Text>
+                    <TouchableOpacity style={{flex:1}} onPress={this.handleMordred}>
+                        <View style={[styles.red, this.state.Mordred ? styles.on : styles.off]}>
+                            <Text style={styles.characterName}>Mordred</Text>
+                            <Image source={require('../Assets/Mordred.png')}/>
+                            <Text>Hides from Merlin</Text>
+                        </View>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.row}>
-                    <TouchableOpacity style={style=styles.red}>
-                        <Text style={styles.characterName}>Assassin</Text>
-                        <Image source={require('../Assets/Assassin.png')}/>
-                        <Text>Find Merlin to win</Text>
+                <TouchableOpacity style={{flex:1}} onPress={this.handlePercival}>
+                        <View style={[styles.blue, this.state.Percival ? styles.on : styles.off]}>
+                            <Text style={[styles.characterName,{color: '#FDB768'}]}>Percival</Text>
+                            <Image source={require('../Assets/Percival.png')}/>
+                            <Text>Knows Merlin AND Morgana</Text>
+                        </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.red}>
-                        <Text style={styles.characterName}>Oberon</Text>
-                        <Image source={require('../Assets/Oberon.png')}/>
-                        <Text>Does not know who is evil</Text>
+                    <TouchableOpacity style={{flex:1}} onPress={this.handleMorgana}>
+                        <View style={[styles.red, this.state.Morgana ? styles.on : styles.off]}>
+                            <Text style={styles.characterName}>Morgana</Text>
+                            <Image source={require('../Assets/Morgana.png')}/>
+                            <Text>Appears as Merlin to Percival</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.row}>
+                <TouchableOpacity style={{flex:1}} onPress={this.handleAssassin}>
+                        <View style={[styles.red, this.state.Assassin ? styles.on : styles.off]}>
+                            <Text style={styles.characterName}>Assassin</Text>
+                            <Image source={require('../Assets/Assassin.png')}/>
+                            <Text>Find Merlin to win</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{flex:1}} onPress={this.handleOberon}>
+                        <View style={[styles.red, this.state.Oberon ? styles.on : styles.off]}>
+                            <Text style={styles.characterName}>Oberon</Text>
+                            <Image source={require('../Assets/Oberon.png')}/>
+                            <Text>Does not know who is evil</Text>
+                        </View>
                     </TouchableOpacity>
                 </View>
                 <TouchableOpacity style={styles.readyButton} onPress={() => this.props.navigation.navigate('Narration', {setup: this.state})}>
@@ -201,5 +204,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#ff6666', 
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    on: {
+        opacity: 1
+    },
+    off: {
+        opacity: .1
     }
+
   });

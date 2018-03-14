@@ -21,9 +21,9 @@ export default class Narration extends Component {
                 {character.Merlin && Expo.Speech.speak('5, 4, 3, 2, 1', {rate:0.5})}
                 {character.Merlin && Expo.Speech.speak('Minions of Mordred, put your thumbs down. Merlin, close your eyes.', {rate:1.02})}
                 {/* Merlin, Percival, and Morgana */}
-                {character.Percival && Expo.Speech.speak('Merlin and Morgana, extend your thumbs so Percival will know of you. Percival, open your eyes so that you may know Merlin and Morgana.', {rate:1.02})}
-                {character.Percival && Expo.Speech.speak('5, 4, 3, 2, 1', {rate:0.5})}
-                {character.Percival && Expo.Speech.speak('Merlin and Morgana, put your thumbs down. Percival, close your eyes.', {rate:1.02})}
+                {character.Percival && (character.Merlin || character.Morgana) && Expo.Speech.speak('Merlin and Morgana, extend your thumbs so Percival will know of you. Percival, open your eyes so that you may know Merlin and Morgana.', {rate:1.02})}
+                {character.Percival && (character.Merlin || character.Morgana) && Expo.Speech.speak('5, 4, 3, 2, 1', {rate:0.5})}
+                {character.Percival && (character.Merlin || character.Morgana) && Expo.Speech.speak('Merlin and Morgana, put your thumbs down. Percival, close your eyes.', {rate:1.02})}
                 {Expo.Speech.speak('All players should have their eyes closed and hands in a fist in front of them. Everyone, open your eyes', {rate:1.02})}
 
                 <Button onPress={() => Expo.Speech.stop()} title='Stop reading' /> 
